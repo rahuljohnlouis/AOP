@@ -7,7 +7,11 @@ public class App {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"com/caveofprogramming/spring/aop/beans.xml");
 		Camera camera = (Camera) context.getBean("camera");
-		camera.snap();
+		try {
+			camera.snap();
+		} catch (Exception e) {
+			System.out.println("Caught exception "+e.getMessage());
+		}
 		context.close();
 	}
 }
