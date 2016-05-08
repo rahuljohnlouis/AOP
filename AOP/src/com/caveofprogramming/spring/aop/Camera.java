@@ -3,9 +3,13 @@ package com.caveofprogramming.spring.aop;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Camera {
+public class Camera implements PhotoSnapper,ICamera {
 
-	public void snap() throws Exception
+	public Camera()
+	{
+		System.out.println("Hello from Camera Constructor");
+	}
+	public void snap()
 	{
 		System.out.println("SNAP!");
 		

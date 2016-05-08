@@ -6,12 +6,15 @@ public class App {
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"com/caveofprogramming/spring/aop/beans.xml");
-		Camera camera = (Camera) context.getBean("camera");
-		try {
-			camera.snap();
-		} catch (Exception e) {
-			System.out.println("Caught exception "+e.getMessage());
-		}
+		ICamera camera = (ICamera) context.getBean("camera");
+		
+		camera.snap();
+		camera.snap(500);
+		camera.snapNighttime();
+		
+		Car car = (Car) context.getBean("car");
+		car.start();
+		
 		context.close();
 	}
 }
