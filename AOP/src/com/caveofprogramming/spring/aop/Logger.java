@@ -9,15 +9,28 @@ import org.springframework.stereotype.Component;
 @Component
 public class Logger {
 
-	@Pointcut("within(com.caveofprogramming.spring..*)")
-	public void cameraSnap()
+//	@Pointcut("within(@org.springframework.stereotype.Component com.caveofprogramming.spring..*)")
+//	public void somePointcut()
+//	{
+//		
+//	}
+//	
+//	@Before("somePointcut()")
+//	public void somePointcutDemo()
+//	{
+//		System.out.println("****BEFORE ADVICE*****");
+//	}
+	
+	@Pointcut("@annotation(java.lang.Deprecated)")
+	public void somePointcut()
 	{
 		
 	}
-
-	@Before(value = "cameraSnap()")
-	public void beforeAdvice() {
-		System.out.println("Before Advice.....");
+	
+	@Before("somePointcut()")
+	public void somePointcutDemo()
+	{
+		System.out.println("****BEFORE ADVICE*****");
 	}
 	
 }
